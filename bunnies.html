@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+        @font-face {
+            font-family: 'Enviro';
+                src: url('webfont.eot'); /* IE9 Compat Modes */
+                    src: url('Enviro LET.ttf')  format('truetype');
+                    }
+                    *{-moz-box-sizing:border-box;box-sizing:border-box; -webkit-box-sizing:border-box;}
+                    body{font-family:Enviro;}
+                    .card{
+                    box-shadow:-1px -1px 0 rgba(33,33,33,.5);
+                    width:275px;
+             font-size:10pt; 
+                    margin:50px auto;
+                    border:1px solid black;
+                    border-radius:25px;
+                    padding:10px;
+                    }
+
+                    .content {
+                     
+                        border-radius:15px;
+                        height:100%;
+                        background-color:#ccc;
+                        position:relative;
+                    }
+
+.top-half {
+
+position:relative;
+}
+.bottom-half {
+    margin:0 10px;
+    padding-bottom:3px;
+}
+
+.indicator {
+    width:10px;
+    height:30px;
+    background-color:#fff;
+ 
+    position:absolute;
+    bottom:0;
+    left:10px;
+}
+.title, .heading {
+    text-transform:uppercase;
+}
+                    .title {
+                        color:white;
+                        margin:3px 0;
+                        font-size:15pt;
+                        text-align:center;
+                        text-shadow:-2px -2px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+                        
+                    }
+                   .description-ctr {
+                        background-color:white;
+                               padding:5px 25px;
+                        border-radius:0 0 10px 10px;
+                        font-size:10pt;
+                        text-align:center;
+               margin-bottom:10px;         
+
+                    }
+                    .dot {
+                        width:35px;
+                        height:35px;
+                        float:left;
+                        background-color:#777;
+                        border-radius:50%;
+                        margin:10px;
+                        position:relative;
+                        z-index:2;
+                    }
+                    .heading {
+                        background-color:white;
+                        text-transform:uppercase;
+                        float:left;
+
+                        margin-top:10px;
+                        margin-left:-20px;
+                        padding-left:10px;
+                        position:relative;
+                        z-index:1;
+                        padding:3px 5px 3px 10px;;
+                    }
+
+            .dice {
+            position:absolute;
+            top:10px;
+            right:10px;
+            
+            }
+            .img-holder{margin:0 10px;}
+            img {
+                width:100%;
+                margin-top:-20px;
+        
+
+            }
+            .die {
+                width:10px;
+                height:10px;
+                margin-bottom:10px;
+                background-color:white;
+             
+            }
+            .bordered {
+/*                 border:3px double black;*/
+                box-shadow:0 0 0 1px black, 0 0 0 3px white, 0 0 0 4px black;
+            } 
+        </style>
+</head>
+<body>
+    <div class="card">
+        <div class="content bordered">
+            <div class="top-half">
+            <div class="indicator bordered">
+            </div>
+       <header>
+               <div class="dot bordered"></div>
+               <div class="heading bordered">
+                Play Immediately
+               </div>
+       </header>
+       <div class="dice">
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+        <div class="die bordered"></div>
+               </div>
+<div class="img-holder"><img src="http://lorempixel.com/300/300" class="bordered"/></div>
+            </div>
+            <div class="bottom-half">
+        <footer>
+            <div class="title">Terrible misfortune</div>
+<div class="description-ctr bordered">One of your bunnies is impaled by a stray lawn dart during a family outing!</div>
+            </footer>
+
+            </div>
+       </div>
+    </div>
+
+
+</body>
+</html>
