@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title></title>
+
+        
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default" style="margin-top:20px;" id="player-management">
+        <div class="panel-heading">Who is playing?</div>
+        <div class="panel-body">
+            <form action="#" id="add-player-form">
+                <div class="form-group">
+                    <label class="control-label" for="">Player Name</label>
+                    <input class="form-control" type="text" value="" placeholder="Little Flett"/>
+                </div>
+                <div class="text-right">
+                    <input class="btn btn-primary" type="submit" value="Add Player"/>
+                </div>         
+            </form>
+        </div>
+        <ul class="list-group" id="player-list-group">
+            <div class="list-group-item">Mo</div>
+            <div class="list-group-item">Frank</div>
+            <div class="list-group-item">Dave</div>
+            <div class="list-group-item">Flett</div>
+        </ul>
+
+        </div>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-lg btn-primary" href="#">Start Game</a>
+    </div>
+
+
+</div>
+
+
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="underscore-min.js"></script>
+
+<script type="text/javascript" src="backbone-min.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+
+var Player = Backbone.Model.extend({
+
+    }),
+    PlayerCollection = Backbone.Collection.extend({
+        model:Player
+    }),
+    PlayerManagementView = Backbone.View.extend({
+    el:$('#player-management'), 
+    events: {
+        'submit form' : 'addPlayer',
+        'focus input' : 'removeErrors'
+
+    },
+    initialize : function () {
+        this.input = $('input[type="text"]');
+
+        this.listenTo(this.collection, 'add', this.render);
+        this.panel = $('#player-list-group');
+    },
+    render: function () {
+        var panel = this.panel;
+    
+        panel.empty();
+        this.collection.each(function(a,b,c) {
+        panel.append('<div class="list-group-item">'+a.get('name')+'</div>');
+        });
+    },
+    addPlayer : function () {
+        if (this.input.val() != '') {
+            this.collection.add(new Player({name:this.input.val()}));
+            this.input.val('').trigger('focus');
+        } else {
+            this.input.closest('.form-group').addClass('has-error');
+        }
+    },
+    removeErrors : function () {
+        this.input.closest('.form-group').removeClass('has-error');
+    }
+});
+
+var players = new PlayerCollection;
+
+new PlayerManagementView({
+    collection: players
+});
+
+
+players.add(new Player({name:'MO'}));
+players.add(new Player({name:'Franklin'}));
+players.add(new Player({name:'Flett'}));
+players.add(new Player({name:'Dave'}));
+</script>
+</html>
