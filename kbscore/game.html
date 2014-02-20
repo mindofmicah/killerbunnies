@@ -9,36 +9,65 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
+<style type="text/css">
+        @font-face {
+                    font-family: 'Enviro';
+                                    src: url('../webfont.eot'); /* IE9 Compat Modes */
+                                                        src: url('Enviro LET.ttf')  format('truetype');
+                                                                            }
+                    body{
+                    font-family:'Enviro';
+                    }
+                    .btn{font-family:Tahoma, Arial;}
+</style>
+<style type="text/css">.show-me{display:block !important;}</style>
 </head>
 <body>
 <div class="container">
-    <div class="panel panel-default" style="margin-top:20px;" id="player-management">
-        <div class="panel-heading">Who is playing?</div>
-        <div class="panel-body">
-            <form action="#" id="add-player-form">
-                <div class="form-group">
-                    <label class="control-label" for="">Player Name</label>
-                    <input class="form-control" type="text" value="" placeholder="Little Flett"/>
+    <div id="content">
+        <div id="player-management" style="display:none;">
+            <div class="panel panel-default" style="margin-top:20px;">
+                <div class="panel-heading"><h2 class="text-center" style="margin:0;">Who is playing?</h2></div>
+                <div class="panel-body">
+                    <form action="#" id="add-player-form">
+                        <div class="form-group">
+                            <label class="control-label" for="">Player Name</label>
+                            <input class="form-control" type="text" value="" placeholder="Little Flett"/>
+                        </div>
+                        <div class="text-right">
+                            <input class="btn btn-primary" type="submit" value="Add Player"/>
+                        </div>         
+                    </form>
                 </div>
-                <div class="text-right">
-                    <input class="btn btn-primary" type="submit" value="Add Player"/>
-                </div>         
-            </form>
+                <ul class="list-group" id="player-list-group">
+                    <div class="list-group-item">Mo</div>
+                    <div class="list-group-item">Frank</div>
+                    <div class="list-group-item">Dave</div>
+                    <div class="list-group-item">Flett</div>
+                </ul>
+            </div>
+            <div class="text-center">
+                <a class="btn btn-lg btn-primary" href="#">Start Game</a>
+            </div>
         </div>
-        <ul class="list-group" id="player-list-group">
-            <div class="list-group-item">Mo</div>
-            <div class="list-group-item">Frank</div>
-            <div class="list-group-item">Dave</div>
-            <div class="list-group-item">Flett</div>
-        </ul>
+        <div id="game-view" style="display:none;">
+            <div class="panel panel-default">
+                    <div class="panel-heading">
+                            <h2 style="margin:0;" class="text-center">The game is on</h2>
+                    </div>
+                    <div class="panel-body">
+                    <a class="btn btn-lg btn-block btn-danger" id="bunny-died" href="#">A Bunny Died!</a>
+                    </div>
+                    <ul id="standings-list-group" class="list-group">
+                        <li class="list-group-item"><span class="badge">1st</span>MO</li>
+                        <li class="list-group-item"><span class="badge">2nd</span>Flett</li>
+                    </ul>
+            </div>
+
 
         </div>
-    </div>
-    <div class="text-center">
-        <a class="btn btn-lg btn-primary" href="#">Start Game</a>
-    </div>
 
+    </div>
 
 </div>
 
@@ -54,8 +83,18 @@
 <script type="text/javascript">
 
 
+var App = Backbone.View.extend({
+    el:$('#content'),
+    show : function (path) {
+        if (!window[path]) {
+            throw new Error('Could not load ' + path);
+        }
 
-
+        this.$el.find('.show-me').removeClass('show-me');
+        window[path].$el.addClass('show-me');
+    }
+});
+var app = new App;
 
 
 var Player = Backbone.Model.extend({
@@ -82,9 +121,10 @@ var Player = Backbone.Model.extend({
     
         panel.empty();
         this.collection.each(function(a,b,c) {
-        panel.append('<div class="list-group-item">'+a.get('name')+'</div>');
+        panel.append('<li class="list-group-item">'+a.get('name')+'</li>');
         });
     },
+
     addPlayer : function () {
         if (this.input.val() != '') {
             this.collection.add(new Player({name:this.input.val()}));
@@ -97,12 +137,48 @@ var Player = Backbone.Model.extend({
         this.input.closest('.form-group').removeClass('has-error');
     }
 });
+var GameView = Backbone.View.extend({
+    el : $('#game-view'),
+    initialize: function () {
+        this.render();
+    },
+    events : {
+        'click #bunny-died' : function () {
+            alert('somebody killed a bunny');
+        }
+    },
+    render: function () {
+        return this;
+    }
+});
 
+$('a').click(function (e) {
+    e.preventDefault();
+    r.navigate('game',{trigger:true});
+});
 var players = new PlayerCollection;
 
-new PlayerManagementView({
+app = new App;
+
+pmv = new PlayerManagementView({
     collection: players
 });
+game = new GameView({
+    collection: players
+});
+R = Backbone.Router.extend({
+    routes: {
+        '': function () {
+            app.show('pmv');
+        },
+        'game':function () {
+            app.show('game');
+        }
+    }
+});
+
+r =new R;
+Backbone.history.start();
 
 
 players.add(new Player({name:'MO'}));
