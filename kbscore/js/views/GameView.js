@@ -1,3 +1,5 @@
+define(['backbone'], function(Backbone){
+
 var GameView = Backbone.View.extend({
     el : $('#game-view'),
     initialize: function () {
@@ -31,5 +33,7 @@ var GameView = Backbone.View.extend({
   
         return this;
     }
+});
+return GameView;
 });
 

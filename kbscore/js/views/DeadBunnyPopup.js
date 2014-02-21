@@ -1,3 +1,5 @@
+define(['backbone'], function (Backbone) {
+
 
 var DeadBunnyPopup = Backbone.View.extend({
 
@@ -43,3 +45,5 @@ var DeadBunnyPopup = Backbone.View.extend({
 });
 
 
+return DeadBunnyPopup;
+});
