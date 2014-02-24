@@ -31,6 +31,9 @@ define(['views/App', 'modules/history/main','modules/players/main','views/GameVi
         },
         'game':function () {
             app.show('game');
+        },
+        rules: function () {
+            app.show('rules')
         }
     }
 });
@@ -49,7 +52,7 @@ popup = new DBP({
 Backbone.history.start();
 
 // Make sure we start on the home page
-r.navigate('', {trigger:true});
+//r.navigate('', {trigger:true});
  
  history_view = new HistoryView({
     collection:history_collection
