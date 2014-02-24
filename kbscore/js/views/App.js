@@ -1,5 +1,5 @@
 
-define(['backbone','modules/players/main','views/GameView'], function (Backbone, Player, GameView) {
+define(['backbone','modules/players/main','views/GameView', 'modules/rules/main'], function (Backbone, Player, GameView, Rules) {
 //var pmv = Player.View();
 var App = Backbone.View.extend({
     el:$('#content'),
@@ -12,6 +12,9 @@ var App = Backbone.View.extend({
                 this.$el.find('.show').removeClass('show');;
                 v = new GameView({collection:Player.Collection()});
                 v.$el.addClass('show');
+            } else if(path === 'rules') {
+                this.$el.find('.show').removeClass('show');
+                Rules.View().$el.addClass('show');
             }
                                                       }
                                                         });
