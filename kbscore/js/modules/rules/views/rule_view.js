@@ -6,7 +6,7 @@ define(['backbone', 'modules/rules/views/rule_form_view'], function (Backbone,Fo
             this.render();
         },
         render: function () {
-            var $ul = this.$el.empty();
+            var $ul = this.$el.find('#rules-editor').addClass('row').empty();
             this.collection.each(function (model) {
                 var v = new FormView({model:model});
                 $ul.append(v.render().$el);

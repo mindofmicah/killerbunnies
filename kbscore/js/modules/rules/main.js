@@ -13,6 +13,8 @@ define(['modules/rules/models/rule','modules/rules/views/rule_view','modules/rul
     return {
         View: function () {
             return view;
-        }
+        },
+        Collection : function () {
+        return collection;}
     }
 });
