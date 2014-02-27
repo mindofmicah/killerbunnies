@@ -11,15 +11,33 @@
 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/main.css" />
+<style type="text/css">
 
+#rules-editor{
+    position:relative;
+}
+#rules-editor .alert {
+
+position:absolute;
+top:0;
+margin:10px auto;
+width:80%;
+height:80%;
+z-index:30;
+left:0;
+right:0;
+
+}
+</style>
      <meta name="viewport" content="width=device-width, initial-scale=1">
    <script type="text/javascript" data-main="js/main" src="js/vendor/require.js"></script>
 </head>
 <body>
 <div class="container">
     <div id="content" style="margin-top:20px;">
-        <div id="rules_view" style="display:none;" class="row">
-            
+        <div id="rules_view" style="display:none;">
+            <div id="rules-editor" class="row"></div> 
+            <button class="btn btn-default btn-block go-home">Home</button>
         </div>
         <div id="player-management" style="display:none;">
             <div class="panel panel-default">
@@ -49,6 +67,8 @@
                     </div>
                     <div class="panel-body">
                         <p>Points are given for each bunny you kill, unless it is one of your own; if you kill your own bunny, you lose a point</p>
+                        <ul id="rule-list"></ul>
+                        <button class="btn-default btn go-to-rules">Edit Rules</button>
                     </div>
                     <div id="standings-list-group" class="list-group" style="margin-top:20px;">
                     </div>
@@ -97,10 +117,27 @@
 
                 </div>
         </div>
+        <script id="tpl_alert" type="text/template">
+                <div class="alert alert-<%=style%>">
+                    <%if(is_closable) {%>
+                    <button class="close" data-dismiss="alert">&times;</button>
+                    <%}%>
+                    <%if(message.length == 1){%>
+                        <p><%=message[0]%></p>
+                    <%}else{%>
+                        <h4><%=message[0]%></h4>
+                        <% for(var i =1; i < message.length; i++) {%>
+                        <p><%=message[i]%></p>
+                        <% }%>
+                    <%}%>
+
+                </div>
+        </script>
 <script type="text/template" id="tpl_rule_form">
-<div class="col-xs-4">
+
 <div class="well">
 <form>
+    <div class="alert-box"></div>
     <p class="text-center" style="margin:0px 0 10px;"><%=label%></p>
     <div class="input-group" style="margin-bottom:10px;">
         <div class="input-group-addon">
@@ -108,8 +145,8 @@
         </div>
         <input class="text-center form-control" type="text" value="<%=multiplier%>" />
         <div class="input-group-btn">
-            <button class="btn btn-default">&plus;</button>
-            <button class="btn btn-default">&minus;</button>
+            <button type="button" class="btn btn-default increase">&plus;</button>
+            <button type="button" class="btn btn-default decrease">&minus;</button>
         </div>
     </div>
 
@@ -117,7 +154,7 @@
     <button type="submit" class="btn btn-block btn-primary">Save!</button>
     </form>
     </div>
-</div>
+
 </script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>

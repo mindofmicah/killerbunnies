@@ -1,19 +1,14 @@
 require.config({
     baseUrl:'js',
     paths: {
+        jquery:"http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min",
         underscore:'vendor/underscore-min',
         backbone:'vendor/backbone-min'
-    },
-    shim: {
-        backbone : {
-            exports: 'Backbone',
-            deps: ['underscore']
-        }
     }
-});
+ });
 
 
-define(['views/App', 'modules/history/main','modules/players/main','views/GameView', 'backbone', 'views/DeadBunnyPopup'], function (App, History, Player, GameView, Backbone, DBP) {
+define(['views/App', 'modules/history/main','modules/players/main','views/GameView', 'backbone', 'views/DeadBunnyPopup', 'modules/rules/main'], function (App, History, Player, GameView, Backbone, DBP, Rules) {
     var app = new App;
     var history_collection = History.Collection();
 
@@ -21,7 +16,8 @@ define(['views/App', 'modules/history/main','modules/players/main','views/GameVi
     var players = Player.Collection();
     var pmv = Player.View();
     var game = new GameView({
-        collection:players
+        collection:players,
+        rules:Rules.Collection()
     });
  
      R = Backbone.Router.extend({
@@ -43,6 +39,12 @@ define(['views/App', 'modules/history/main','modules/players/main','views/GameVi
     r.navigate('game',{trigger:true});
 });
 
+$('.go-home').click(function () {
+    r.navigate('game', {trigger:true});
+});
+$('.go-to-rules').click(function () {
+    r.navigate('rules', {trigger:true});
+});
 popup = new DBP({
     collection:Player.Collection(),
     history_collection:History.Collection()

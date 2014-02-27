@@ -2,8 +2,13 @@ define(['backbone'], function(Backbone){
 
 var GameView = Backbone.View.extend({
     el : $('#game-view'),
-    initialize: function () {
+    initialize: function (params) {
         this.standings = this.$el.find('#standings-list-group');
+        this.rules = params.rules;
+        this.collection = params.collection;
+  //      console.log(this.rules);
+//        c
+       this.listenTo(this.rules,'change', this.render);
         this.listenTo(this.collection, 'change', this.render);
         this.render();
     },
@@ -21,9 +26,20 @@ var GameView = Backbone.View.extend({
         }
         return i +'th Place';
     },
+    showSuccess : function() {
+
+    },
     render: function () {
         var standings = this.standings.empty();
         var ranked_models = this.collection.getRankedModels();
+
+var ul =         this.$el.find('#rule-list').empty();
+
+    this.rules.each(function (a,b,c,d) {
+        ul.append('<li>'+a.get('label')+' '+a.get('multiplier')+'</li>');    
+
+    });
+
         for (var i = 0; i < ranked_models.length;i++) {
             
             standings.append('<div class="list-group-item '+(ranked_models[i].rank == 1 ?' list-group-item-success':'')+'"><span class="badge badge-success'+(i==1?'':'')+'">'+this.formatRank(ranked_models[i].rank)+'</span>'+ranked_models[i].name + '</div>');           

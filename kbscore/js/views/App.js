@@ -10,7 +10,7 @@ var App = Backbone.View.extend({
                 Player.View().$el.addClass('show');
             } else if (path === 'game') {
                 this.$el.find('.show').removeClass('show');;
-                v = new GameView({collection:Player.Collection()});
+                v = new GameView({collection:Player.Collection(), rules:Rules.Collection()});
                 v.$el.addClass('show');
             } else if(path === 'rules') {
                 this.$el.find('.show').removeClass('show');
