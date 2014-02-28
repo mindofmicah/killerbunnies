@@ -1,0 +1,28 @@
+{
+  "name": "kbscore",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mindofmicah/killerbunnies",
+  "authors": [
+    "Micah <micah@whamdonk.com>"
+  ],
+  "description": "Killer Bunny Web App",
+  "main": "target/js/main.js",
+  "keywords": [
+    "Killer",
+    "Bunnies",
+    "scoring",
+    "alternative"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone-alert": "git://github.com/mindofmicah/backbone-alert.git"
+  }
+}

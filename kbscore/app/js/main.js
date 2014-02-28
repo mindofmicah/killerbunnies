@@ -1,9 +1,11 @@
 require.config({
     baseUrl:'js',
     paths: {
+
         jquery:"http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min",
         underscore:'vendor/underscore-min',
-        backbone:'vendor/backbone-min'
+        backbone:'vendor/backbone-min',
+        alerts:'vendor/backbone-alert/src/alerts'
     }
  });
 

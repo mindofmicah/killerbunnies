@@ -5,7 +5,9 @@
 
 body{
     font-family:'Enviro';
+    font-size:2em;
 }
+
 .btn, .badge{
     font-family:Tahoma, Arial;
 }

@@ -1,6 +1,7 @@
-define(['backbone', 'modules/alerts/main'], function (Backbone, Alert) {
+define(['backbone', 'alerts/main'], function (Backbone, Alert) {
+//console.log(aalert);
     return Backbone.View.extend({
-        className:'col-xs-3',
+        className:'col-md-4 col-xs-12',
         tagName:'div',
         template : _.template($('#tpl_rule_form').html()),
         initialize: function (params) {
