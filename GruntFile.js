@@ -14,6 +14,7 @@ module.exports = function (grunt) {
                     logLevel:0,
                     findNestedDependencies : true,
                     fileExclusionRegExp:/^\./,
+                    skipDirOptimize:true,
                     inlineText:true
                 }
             }
