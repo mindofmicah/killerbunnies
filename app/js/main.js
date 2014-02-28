@@ -16,7 +16,16 @@ require.config({
  });
 
 
-define(['views/App', 'modules/history/main','modules/players/main','views/GameView', 'backbone', 'views/DeadBunnyPopup', 'modules/rules/main', 'bootstrap'], function (App, History, Player, GameView, Backbone, DBP, Rules, Bootstrap) 
+define([
+    'views/App', 
+    'modules/history/main',
+    'modules/players/main',
+    'views/GameView', 
+    'backbone', 
+    'views/DeadBunnyPopup', 
+    'modules/rules/main', 
+    'bootstrap'
+], function (App, History, Player, GameView, Backbone, DBP, Rules, Bootstrap) { 
     var app = new App;
     var history_collection = History.Collection();
 
