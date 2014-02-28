@@ -4,12 +4,19 @@ require.config({
         jquery:"vendor/jquery/dist/jquery.min",
         underscore:'vendor/underscore/underscore',
         backbone:'vendor/backbone/backbone',
-        alerts:'vendor/backbone-alert/src/alerts'
+        alerts:'vendor/backbone-alert/src/alerts',
+        bootstrap:'vendor/bootstrap/dist/js/bootstrap'
+    },
+    shim: {
+        bootstrap:{
+            deps:['jquery'],
+            exports:"$.fn.popover"
+        }
     }
  });
 
 
-define(['views/App', 'modules/history/main','modules/players/main','views/GameView', 'backbone', 'views/DeadBunnyPopup', 'modules/rules/main'], function (App, History, Player, GameView, Backbone, DBP, Rules) {
+define(['views/App', 'modules/history/main','modules/players/main','views/GameView', 'backbone', 'views/DeadBunnyPopup', 'modules/rules/main', 'bootstrap'], function (App, History, Player, GameView, Backbone, DBP, Rules, Bootstrap) 
     var app = new App;
     var history_collection = History.Collection();
 
