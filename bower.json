@@ -26,6 +26,7 @@
     "backbone-alert": "git://github.com/mindofmicah/backbone-alert.git",
     "backbone": "~1.1.2",
     "jquery": "~2.1.0",
+    "requirejs": null,
     "bootstrap": "~3.1.1"
   }
 }
