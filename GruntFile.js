@@ -3,10 +3,10 @@ module.exports = function (grunt) {
         requirejs: {
             compile : {
                 options : {
-                    appDir : 'app/',
+                    appDir : 'public/',
                     baseUrl : 'js',
                     dir :'target/',
-                    mainConfigFile:'app/js/main.js',
+                    mainConfigFile:'public/js/main.js',
                     keepBuildDir:false,
                     modules:[
                     {name:'main'}
