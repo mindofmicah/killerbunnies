@@ -21,7 +21,8 @@ define(['backbone','modules/players/models/player'], function(Backbone, Player){
         });
     },
 
-    addPlayer : function () {
+    addPlayer : function (e) {
+        e.preventDefault();
         if (this.input.val() != '') {
             this.collection.add(new Player({name:this.input.val()}));
             this.input.val('').trigger('focus');
