@@ -1,3 +1,4 @@
+mkdir target/public -p 2>/dev/null
 grunt requirejs
 
 cd target/public
@@ -13,4 +14,4 @@ cp -av ../../app ../
 
 
 echo "Uploading files to server"
-rsync -rlpgoDv --size-only . ninemilefilms@ninemilefilms.com:~/html/whamdonk/public/kb/
+rsync -rlpgoDv --size-only . ninemilefilms@ninemilefilms.com:~/html/killerbunnies/
