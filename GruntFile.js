@@ -5,7 +5,7 @@ module.exports = function (grunt) {
                 options : {
                     appDir : 'public/',
                     baseUrl : 'js',
-                    dir :'target/',
+                    dir :'target/public/',
                     mainConfigFile:'public/js/main.js',
                     keepBuildDir:false,
                     modules:[
