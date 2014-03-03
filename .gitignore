@@ -2,9 +2,8 @@
 /public/js/vendor/
 /node_modules/
 /target/
-/bootstrap/
+
 /CONTRIBUTING.md
 /server.php
 /readme.md
-/artisan
-
+.env.local.php
