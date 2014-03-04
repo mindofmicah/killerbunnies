@@ -11,6 +11,7 @@ find js/ -type d | xargs rmdir -p 2>/dev/null
 
 echo "Copy over the app directory"
 cp -auv ../../app ../
+cp -auv ../../bootstrap ../
 
 
 echo "Uploading files to server"
