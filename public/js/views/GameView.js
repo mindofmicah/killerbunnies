@@ -6,22 +6,20 @@ var GameView = Backbone.View.extend({
         this.standings = this.$el.find('#standings-list-group');
         this.rules = params.rules;
         this.collection = params.collection;
-  //      console.log(this.rules);
-//        c
-       this.listenTo(this.rules,'change', this.render);
+        this.listenTo(this.rules,'change', this.render);
         this.listenTo(this.collection, 'change', this.render);
         this.render();
     },
     events : {
     },
     formatRank: function (i) {
-        if (i == 1) {
+        if (i === 1) {
             return i + 'st Place';
         }
-        if (i == 2) {
+        if (i === 2) {
             return i + 'nd Place';
         }
-        if (i == 3) {
+        if (i === 3) {
             return i + 'rd Place';
         }
         return i +'th Place';
@@ -42,7 +40,7 @@ var ul =         this.$el.find('#rule-list').empty();
 
         for (var i = 0; i < ranked_models.length;i++) {
             
-            standings.append('<div class="list-group-item '+(ranked_models[i].rank == 1 ?' list-group-item-success':'')+'"><span class="badge badge-success'+(i==1?'':'')+'">'+this.formatRank(ranked_models[i].rank)+'</span>'+ranked_models[i].name + '</div>');           
+            standings.append('<div class="list-group-item '+(ranked_models[i].rank == 1 ?' list-group-item-success':'')+'"><span class="badge badge-success'+(i===1?'':'')+'">'+this.formatRank(ranked_models[i].rank)+'</span>'+ranked_models[i].name + '</div>');           
         }
 
             
