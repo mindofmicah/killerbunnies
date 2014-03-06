@@ -20,8 +20,8 @@ var DeadBunnyPopup = Backbone.View.extend({
     events : {
         'submit #dead-bunny' : 'markAsKilled'
     },
-    markAsKilled : function (a,b,c,d) {
-        a.preventDefault();
+    markAsKilled : function (evt) {
+        evt.preventDefault();
         var killer = this.selects.killer.val();
         var owner = this.selects.owner.val();
 
@@ -36,8 +36,7 @@ var DeadBunnyPopup = Backbone.View.extend({
         for(var key in this.selects) {
             var $select = this.selects[key].empty();
 
-            this.collection.each(function (model,a,b,c) {
-//            console.log(model.cid);
+            this.collection.each(function (model) {
                 $select.append('<option value="' + model.cid + '">' + model.get('name') + '</option>');
             });
         } 
