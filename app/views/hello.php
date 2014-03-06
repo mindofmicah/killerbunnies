@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="/css/main.css" />
 <style type="text/css">
 
 #rules-editor{
@@ -29,7 +29,7 @@ right:0;
 }
 </style>
      <meta name="viewport" content="width=device-width, initial-scale=1">
-   <script type="text/javascript" data-main="js/main" src="js/vendor/requirejs/require.js"></script>
+   <script type="text/javascript" data-main="/js/main" src="/js/vendor/requirejs/require.js"></script>
 </head>
 <body>
 <div class="container">
