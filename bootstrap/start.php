@@ -25,7 +25,8 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(function () {
-    return getenv('APP_ENV') ?: 'local';
+    // @todo find a better approach
+    return file_exists('../.is-live') ? 'live' : 'local';
 });
 
 /*
