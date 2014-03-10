@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'modules/players/models/player'], function ($, Backbone, Player) {
+define(['jquery', 'backbone', 'modules/players/models/player', 'modules/players/views/player_listing_view'], function ($, Backbone, Player, PlayerListingView) {
     var PlayerManagementView = Backbone.View.extend({
         el: $('#player-management'),
         events: {
@@ -11,12 +11,15 @@ define(['jquery', 'backbone', 'modules/players/models/player'], function ($, Bac
             this.panel = $('#player-list-group');
         },
         render: function () {
-            var panel = this.panel;
+            var panel = this.panel,
+                listing_view;
 
             panel.empty();
-            this.collection.each(function (a) {
-                panel.append('<li class="list-group-item">' + a.get('name') + '</li>');
+            this.collection.each(function (model) {
+                listing_view = new PlayerListingView({model: model});
+                panel.append(listing_view.el);
             });
+            return this;
         },
         addPlayer: function (e) {
             e.preventDefault();
