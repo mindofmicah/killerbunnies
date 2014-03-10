@@ -3,7 +3,6 @@ define(['backbone', 'modules/players/models/player'], function (Backbone, Player
 PlayerCollection = Backbone.Collection.extend({
         model:Player,
         getRankedModels : function () {
-//        console.log(this.models);
 
             var m = this.models.sort(function (a,b) {
                 return a.get('score') < b.get('score');
