@@ -4,20 +4,21 @@ define(['backbone'], function (Backbone) {
         initialize: function () {
             this.render();
         },
-        formatRank: function (i) {
-            if (i == 1) {
-                return i + 'st Place';
+        getOrdinal : function (index) {
+            switch (index) {
+            case 1:
+                return 'st';
+            case 2:
+                return 'nd';
+            case 3:
+                return 'rd';
             }
-            if (i == 2) {
-                return i + 'nd Place';
-            }
-            if (i == 3) {
-                return i + 'rd Place';
-            }
-            return i + 'th Place';
+            return 'th';
+        },
+        formatRank: function (index) {
+            return index + this.getOrdinal(index) + ' Place';
         },
         render: function () {
-            //                standings.append('') + '"><span cla'">' + this.formatRank(ranked_models[i].rank) + '</span>' + ranked_models[i].name + '</div>');
             var badge = $('<span class="badge">' + this.formatRank(this.model.get('rank')) + '</span>');
             if (this.model.get('rank') === 1) {
                 this.$el.addClass('list-group-item-success');
