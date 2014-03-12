@@ -29,10 +29,37 @@ right:0;
 }
 </style>
      <meta name="viewport" content="width=device-width, initial-scale=1">
-   <script type="text/javascript" data-main="/js/main" src="/js/vendor/requirejs/require.js"></script>
+   <script type="text/javascript" data-main="/js/start" src="/js/vendor/requirejs/require.js"></script>
 </head>
 <body>
 <div class="container">
+    <div id="landing-page">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2 class="text-center">Who is playing?</h2></div>
+                <div class="panel-body">
+                    <form action="#" id="add-player-form">
+                        <div class="form-group">
+                            <label class="control-label" for="">Player Name</label>
+                            <input class="form-control" type="text" value="" placeholder="Little Flett"/>
+                        </div>
+                        <div class="text-right">
+                            <input class="btn btn-primary" type="submit" value="Add Player"/>
+                        </div>         
+                    </form>
+                </div>
+                <ul class="list-group" id="player-list-group">
+                </ul>
+            </div>
+            <div class="text-center">
+                <form id="start_game" method="post" action="/games/start">
+                <input type="hidden" name="players" id="Aaaaaa" />
+                <button type="submit" class="btn btn-lg btn-primary" >Start Game</button>
+                </form>
+            </div>
+
+    
+    
+    </div>
     <div id="content" style="margin-top:20px;">
         <div id="rules_view" style="display:none;">
             <div id="rules-editor" class="row"></div> 
@@ -132,6 +159,19 @@ right:0;
 
                 </div>
         </script>
+
+<script type="text/template" id="tpl_player_form">
+                    <form action="#" id="add-player-form">
+                        <div class="form-group">
+                            <label class="control-label" for="">Player Name</label>
+                            <input class="form-control" type="text" value="" placeholder="Little Flett"/>
+                        </div>
+                        <div class="text-right">
+                            <input class="btn btn-primary" type="submit" value="Add Player"/>
+                        </div>         
+                    </form>
+</script>
+
 <script type="text/template" id="tpl_rule_form">
 
 <div class="well">
