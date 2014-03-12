@@ -1,4 +1,4 @@
-define(['backbone'], function (Backbone) {
+define(['jquery', 'backbone'], function ($, Backbone) {
     var ScoreboardListView = Backbone.View.extend({
         className: 'list-group-item',
         initialize: function () {
