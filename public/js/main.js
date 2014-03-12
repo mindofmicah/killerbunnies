@@ -1,4 +1,5 @@
-require(['./common'], function(Common) {
+'use strict';
+require(['./common'], function() {
 
 require([
     'views/App', 
@@ -9,17 +10,12 @@ require([
     'views/DeadBunnyPopup', 
     'modules/rules/main', 
     'bootstrap'
-], function (App, History, Player, GameView, Backbone, DBP, Rules, Bootstrap) { 
+], function (App, History, Player, GameView, Backbone, DBP, Rules) { 
     var app = new App;
     var history_collection = History.Collection();
 
 
     var players = Player.Collection();
-    var pmv = Player.View();
-    var game = new GameView({
-        collection:players,
-        rules:Rules.Collection()
-    });
  
     var R = Backbone.Router.extend({
     routes: {
@@ -30,7 +26,7 @@ require([
             app.show('game');
         },
         rules: function () {
-            app.show('rules')
+            app.show('rules');
         }
     }
 });
@@ -51,13 +47,13 @@ var popup = new DBP({
     history_collection:History.Collection()
 });
 
-var r =new R;
+var r = new R;
 Backbone.history.start();
 
 // Make sure we start on the home page
 //r.navigate('', {trigger:true});
  
-var history_view = new HistoryView({
+var history_view = History.View({
     collection:history_collection
 });
 
