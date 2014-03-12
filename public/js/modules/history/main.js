@@ -2,8 +2,8 @@ define([
     'modules/history/models/history',
     'modules/history/views/history_view',
     'modules/history/collections/histories'
-], function (m,v,c) {
-    var collection = new c;
+], function (M, V, C) {
+    var collection = new C;
     return {
         initialize: function () {
             return 'loaded history stuff';
@@ -15,10 +15,10 @@ define([
         ,
         Model : function () {
 
-            return new m;
+            return new M;
         },
         View : function () {
-            return new v;
+            return new V;
         }
         
     };
