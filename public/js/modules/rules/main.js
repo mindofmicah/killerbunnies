@@ -1,4 +1,8 @@
-define(['modules/rules/models/rule','modules/rules/views/rule_view','modules/rules/collections/rules'], function (m,v,c){ 
+define([
+    'modules/rules/models/rule',
+    'modules/rules/views/rule_view',
+    'modules/rules/collections/rules'
+], function (m,v,c){ 
 //    var view = new v;
     var collection = new c;
 
