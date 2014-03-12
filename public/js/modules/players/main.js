@@ -3,15 +3,15 @@ define([
     'modules/players/views/player_view',
     'modules/players/collections/players',
     'modules/players/views/scoreboard_view'
-], function (m,v,c, s) {
-    var collection = new c;
+], function (M, V, C, S) {
+    var collection = new C;
     
      var data = [
             {name:'mo',score:1},{name:'flett',score:4},{name:'andy',score:-3}
         ];
-        collection = new c(data);
+        collection = new C(data);
     
-    var view = new v({
+    var view = new V({
         collection:collection
     });
     return {
@@ -19,11 +19,11 @@ define([
             return collection;
         },
         Model: function () {
-            return new m;
+            return new M;
         },
         View: function (which_view) {
             if (which_view === 'scoreboard') {
-                return new s({collection:collection});
+                return new S({collection:collection});
             }
             return view;
         }
