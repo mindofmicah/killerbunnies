@@ -9,7 +9,7 @@ define([
         el: $('#player-management'),
         events: {
             'submit form': 'addPlayer',
-            'focus input': 'removeErrors'
+            'focus input': 'removeErrors',
             'submit #start-game':'startGame'
         },
         startGame : function (evt) {
@@ -18,9 +18,8 @@ define([
             if (this.collection.length === 0) {
                 return;
             }
+            
 
-     //       console.log(this.collection.pluck('name'));
-  
         },
         initialize: function () {
             this.input = $('input[type="text"]');
