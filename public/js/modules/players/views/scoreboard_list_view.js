@@ -4,6 +4,15 @@ define(['jquery', 'backbone'], function ($, Backbone) {
         initialize: function () {
             this.render();
         },
+        render: function () {
+            var badge = $('<span class="badge">' + this.formatRank(this.model.get('rank')) + '</span>');
+            if (this.model.get('rank') === 1) {
+                this.$el.addClass('list-group-item-success');
+                badge.addClass('badge-success');
+            }
+            this.$el.html(badge).append(this.model.get('name'));
+            return this;
+        },
         getOrdinal : function (index) {
             switch (index) {
             case 1:
@@ -17,19 +26,7 @@ define(['jquery', 'backbone'], function ($, Backbone) {
         },
         formatRank: function (index) {
             return index + this.getOrdinal(index) + ' Place';
-        },
-        render: function () {
-            var badge = $('<span class="badge">' + this.formatRank(this.model.get('rank')) + '</span>');
-            if (this.model.get('rank') === 1) {
-                this.$el.addClass('list-group-item-success');
-                badge.addClass('badge-success');
-            }
-            this.$el.html(badge).append(this.model.get('name'));
-            return this;
-        },
-        events: {
         }
-
     });
 
     return ScoreboardListView;
