@@ -1,9 +1,21 @@
+
 define(['jquery', 'backbone', 'modules/players/models/player', 'modules/players/views/player_listing_view'], function ($, Backbone, Player, PlayerListingView) {
     var PlayerManagementView = Backbone.View.extend({
         el: $('#player-management'),
         events: {
             'submit form': 'addPlayer',
             'focus input': 'removeErrors'
+            'submit #start-game':'startGame'
+        },
+        startGame : function (evt) {
+            evt.preventDefault();
+
+            if (this.collection.length === 0) {
+                return;
+            }
+
+     //       console.log(this.collection.pluck('name'));
+  
         },
         initialize: function () {
             this.input = $('input[type="text"]');
