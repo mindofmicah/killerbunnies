@@ -1,5 +1,10 @@
 
-define(['jquery', 'backbone', 'modules/players/models/player', 'modules/players/views/player_listing_view'], function ($, Backbone, Player, PlayerListingView) {
+define([
+    'jquery', 
+    'backbone', 
+    'modules/players/models/player', 
+    'modules/players/views/player_listing_view'
+], function ($, Backbone, Player, PlayerListingView) {
     var PlayerManagementView = Backbone.View.extend({
         el: $('#player-management'),
         events: {
