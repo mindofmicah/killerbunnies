@@ -5,12 +5,11 @@ define([
     'modules/players/models/player', 
     'modules/players/views/player_listing_view'
 ], function ($, Backbone, Player, PlayerListingView) {
-    'use strict';
     var PlayerManagementView = Backbone.View.extend({
         el: $('#player-management'),
         events: {
             'submit form': 'addPlayer',
-            'focus input': 'removeErrors',
+            'focus input': 'removeErrors'
             'submit #start-game':'startGame'
         },
         startGame : function (evt) {
