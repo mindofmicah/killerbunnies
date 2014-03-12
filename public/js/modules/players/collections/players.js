@@ -4,12 +4,14 @@ define(['backbone', 'modules/players/models/player'], function (Backbone, Player
         comparator: function (model) {
             return -model.get('score');
         },
-        calculateRanks: function(){
+        calculateRanks: function () {
+            var current_rank = 0,
+                current_score = null,
+                i;
+
             this.sort();
-            var current_rank = 0;
-            var current_score = null;
-            for(var i = 0; i<this.models.length; i++) {
-                if (this.models[i].get('score') === current_score ) {
+            for (i = 0; i < this.models.length; i++) {
+                if (this.models[i].get('score') === current_score) {
                     this.models[i].set('rank', current_rank);
                 } else {
                     current_rank++;
