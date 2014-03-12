@@ -12,6 +12,12 @@ class GamesController extends \BaseController {
             return 'something went wrong';
         }
     }
+
+    public function postStart()
+    {
+        dd(Input::get('players'));
+        dd(Input::all());
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
