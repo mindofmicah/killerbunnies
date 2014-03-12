@@ -2,14 +2,24 @@
 
 class GamesController extends \BaseController {
 
+#public $restful = true;
+    public function getPlay($slug)
+    {
+        try {
+            $game = Game::whereSlug($slug)->firstOrFail();
+            return View::make('games.play');
+        } catch(Exception $e) {
+            return 'something went wrong';
+        }
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
-		//
+        return View::make('games.index');
 	}
 
 	/**
@@ -74,9 +84,13 @@ class GamesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-	}
+
+}
         public function getPlay($slug)
         {
             return View::make('games.play');
         }
+
+
 }
+
