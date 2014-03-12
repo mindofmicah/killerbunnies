@@ -86,11 +86,6 @@ class GamesController extends \BaseController {
 		//
 
 }
-        public function getPlay($slug)
-        {
-            return View::make('games.play');
-        }
-
-
+    
 }
 
