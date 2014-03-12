@@ -21,7 +21,7 @@ require([
         rules:Rules.Collection()
     });
  
-     R = Backbone.Router.extend({
+    var R = Backbone.Router.extend({
     routes: {
         '': function () {
             app.show('pmv');
