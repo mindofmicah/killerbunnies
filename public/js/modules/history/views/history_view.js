@@ -1,7 +1,7 @@
 define(
     ['backbone'], 
     function (Backbone) {
-        return HistoryView = Backbone.View.extend({
+        var HistoryView = Backbone.View.extend({
             el: $('#history'),
             initialize: function () {
                 this.listenTo(this.collection, 'add', this.render);
@@ -20,5 +20,7 @@ define(
                 this.$el.removeClass('hide');
             }
         });
+
+        return HistoryView;
     }
 );
