@@ -46,18 +46,18 @@ $('.go-home').click(function () {
 $('.go-to-rules').click(function () {
     r.navigate('rules', {trigger:true});
 });
-popup = new DBP({
+var popup = new DBP({
     collection:Player.Collection(),
     history_collection:History.Collection()
 });
 
- r =new R;
+var r =new R;
 Backbone.history.start();
 
 // Make sure we start on the home page
 //r.navigate('', {trigger:true});
  
- history_view = new HistoryView({
+var history_view = new HistoryView({
     collection:history_collection
 });
 
