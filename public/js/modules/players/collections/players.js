@@ -1,4 +1,6 @@
+/*globals define*/
 define(['backbone', 'modules/players/models/player'], function (Backbone, Player) {
+    'use strict';
     var PlayerCollection = Backbone.Collection.extend({
         model: Player,
         comparator: function (model) {
