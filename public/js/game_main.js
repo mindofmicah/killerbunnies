@@ -1,4 +1,5 @@
 require(['./common'], function () {
+    'use strict';
     require([
         'jquery',
         'modules/players/main'
