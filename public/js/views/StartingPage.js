@@ -1,12 +1,13 @@
+/*global define */
 define(['backbone', 'modules/players/main'], function (Backbone, Player) {
     'use strict';
 
     var StartingPage = Backbone.View.extend({
             initialize : function () {
                 this.collection = Player.Collection();
-                this.player_view = Player.View('form', {el:$('.panel-body')}); 
+                this.player_view = Player.View('form', {el:$('.panel-body')});
                 this.render();
-            }, 
+            },
             render : function () {
                 return this;
             },
