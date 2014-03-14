@@ -13,7 +13,7 @@ require.config({
             exports:'$.fn.popover'
         }
     }
- });
+});
 
 
 

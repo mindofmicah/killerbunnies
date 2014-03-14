@@ -1,5 +1,8 @@
 require(['./common'], function () {
-    'use strict';
+    
+    console.log('afs');
+
+    define('asfd');
     require([
         'jquery',
         'modules/players/main'
