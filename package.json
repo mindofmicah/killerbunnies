@@ -4,6 +4,11 @@
     "grunt-contrib-requirejs": "^0.4.3",
     "grunt-cli": "^0.1.13",
     "jshint": "^2.4.4",
-    "karma": "^0.12.1"
+    "karma": "^0.12.1",
+    "karma-chrome-launcher": "^0.1.2",
+    "karma-jasmine": "^0.2.2",
+    "karma-requirejs": "^0.2.1"
+  },
+  "dependencies": {
   }
 }
