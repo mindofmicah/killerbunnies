@@ -15,9 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      {pattern:'public/js/vendor/jquery/dist/jquery.js',watched:false, served:true, included:true}, 
+      {pattern:'public/js/vendor/jasmine-jquery/lib/jasmine-jquery.js',watched:false, served:true, included:true}, 
       'tests/test-main.js',
       {pattern: 'tests/**/*.js', included: false},
-      {pattern: 'public/js/**/*.js', included: false}
+      {pattern: 'public/js/**/*.js', included: false},
+
+      {pattern: 'tests/**/*.html', watched: true, served: true, included:false}
     ],
 
 
@@ -30,14 +34,15 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-    
+        'public/js/**/*.js' : ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
 
 
     // web server port
@@ -59,11 +64,16 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+    coverageReporter : {
+        type:'html',
+        dir:'coverage'
+    }
   });
 };
