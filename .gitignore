@@ -2,7 +2,7 @@
 /public/js/vendor/
 /node_modules/
 /target/
-
+*.swp
 /CONTRIBUTING.md
 /server.php
 /readme.md
