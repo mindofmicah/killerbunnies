@@ -3,23 +3,16 @@ define([
     'modules/history/views/history_view',
     'modules/history/collections/histories'
 ], function (M, V, C) {
-    var collection = new C;
+    var history_collection = new C;
     return {
-        initialize: function () {
-            return 'loaded history stuff';
-        }
-        ,
         Collection : function () {
-              return collection; 
-        }
-        ,
-        Model : function () {
-
-            return new M;
+            return history_collection; 
         },
         View : function () {
-            return new V;
+            return new V; 
+        },
+        Model: function () {
+            return new M;
         }
-        
     };
 });
