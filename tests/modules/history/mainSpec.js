@@ -1,4 +1,5 @@
-define(['backbone','modules/history/main'], function (Backbone, History) {
+define(['backbone', 'modules/history/main'], function (Backbone, History) {
+    'use strict';
     describe('HistoryModule', function () {
         it('should exist', function () {
             expect(History).toBeDefined();
@@ -11,15 +12,16 @@ define(['backbone','modules/history/main'], function (Backbone, History) {
                 expect(History.Collection() instanceof Backbone.Collection).toEqual(true);
             });
             it('should return the same collection by default', function () {
-                var collection_1 = History.Collection();
-                var collection_2 = History.Collection();
+                var collection_1 = History.Collection(),
+                    collection_2 = History.Collection();
+
                 expect(collection_1).toEqual(collection_2);
             });
-            it('should return the same collection by default even if I change a variable', function() {
+            it('should return the same collection by default even if I change a variable', function () {
                 var collection_1 = History.Collection();
                 collection_1.add({});
-                var collection_2 = History.Collection();
-                expect(collection_1).toEqual(collection_2);
+
+                expect(History.Collection()).toEqual(collection_1);
             });
         });
         describe('Model Method', function () {
@@ -30,8 +32,9 @@ define(['backbone','modules/history/main'], function (Backbone, History) {
                 expect(History.Model() instanceof Backbone.Model).toEqual(true);
             });
             it('should return different models each time', function () {
-                var model_1 = History.Model();
-                var model_2 = History.Model();
+                var model_1 = History.Model(),
+                    model_2 = History.Model();
+
                 expect(model_1).not.toEqual(model_2);
             });
         });
